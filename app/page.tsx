@@ -1,8 +1,11 @@
+
 import Header from "@/components/header";
 import Catalog from "@/components/catalog";
 import { demoGames } from "@/lib/demo-games";
 import { createClient } from "@supabase/supabase-js";
 import type { Game } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
 
 async function getGames(): Promise<Game[]> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
