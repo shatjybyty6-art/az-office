@@ -9,9 +9,7 @@ async function getGames(): Promise<Game[]> {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !key) {
-    console.error(
-      "Supabase configuration is missing: check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY."
-    );
+    console.error("Supabase environment variables are missing.");
     return demoGames;
   }
 
@@ -88,4 +86,43 @@ export default async function Home() {
             ].map(([big, small]) => (
               <div
                 key={big}
-                className="rounded-2xl border border-white/10 bg-slate-950/
+                className="rounded-2xl border border-white/10 bg-slate-950/40 p-4"
+              >
+                <div className="text-2xl font-black text-violet-200">
+                  {big}
+                </div>
+                <div className="mt-1 text-xs text-slate-400 md:text-sm">
+                  {small}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Catalog initialGames={games} />
+
+      <section
+        id="about"
+        className="mx-auto max-w-7xl px-5 py-14 md:px-8"
+      >
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-l from-violet-950/50 to-slate-900/60 p-7 md:p-10">
+          <p className="text-sm font-bold text-violet-300">AZ OFFICE</p>
+
+          <h2 className="mt-3 text-2xl font-black md:text-3xl">
+            مكتب أحمد الزاملي
+          </h2>
+
+          <p className="mt-3 max-w-2xl leading-8 text-slate-300">
+            مكتبة ألعاب منظمة لتسهيل البحث عن ألعاب PlayStation. يمكنك إضافة
+            الأغلفة والمعلومات وتحديثها عبر لوحة الإدارة.
+          </p>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 px-5 py-7 text-center text-sm text-slate-500">
+        © {new Date().getFullYear()} AZ OFFICE — مكتب أحمد الزاملي. جميع الحقوق محفوظة.
+      </footer>
+    </main>
+  );
+}
