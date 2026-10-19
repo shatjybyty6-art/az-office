@@ -1,4 +1,4 @@
-```tsx
+
 import Header from "@/components/header";
 import Catalog from "@/components/catalog";
 import { demoGames } from "@/lib/demo-games";
